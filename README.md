@@ -1,6 +1,6 @@
 # Programação Estruturada Academia do Programador
-
 Desenvolver um algoritmo que dados 10 valores inteiros permita:
+
 • Encontrar o Maior Valor da sequência
 
 • Encontrar o Menor Valor da sequência
@@ -16,6 +16,7 @@ Desenvolver um algoritmo que dados 10 valores inteiros permita:
 • Remover um item da sequência
 
 Critérios de Aceite:
+
 • Para obter o Maior valor utilize o modificador de parâmetro: ref
 
 • Para obter o Menor valor utilize o modificador de parâmetro: out
