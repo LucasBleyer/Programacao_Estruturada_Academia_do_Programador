@@ -6,31 +6,34 @@ namespace Programacao_Estruturada
     {
         static void Main(string[] args)
         {
-            double[] numeros = new double[10] { 15, -3, 0, 4, -2, 1, 13, 8, 2, -5 };
+            double[] numeros = new double[10] { 15, -3, 0, 4, -2, 4, 13, 8, 2, -5 };
             double maior = 0, menor, media = 0;
             double[] tres_maiores_valores = new double[3];
             double[] negativos;
 
             EncontrarMaiorValor(ref maior, ref numeros);
-            Console.WriteLine("O maior valor é: " + maior);
+            Console.WriteLine("\r\nO maior valor é: " + maior);
 
             EncontrarMenorValor(out menor, ref numeros);
-            Console.WriteLine("O menor valor é: " + menor);
+            Console.WriteLine("\r\nO menor valor é: " + menor);
 
             EncontrarValorMedio(ref media, ref numeros);
-            Console.WriteLine("O valor médio é: " + media);
+            Console.WriteLine("\r\nO valor médio é: " + media);
 
             EncontrarTresMaioresValores(ref tres_maiores_valores, ref numeros);
-            Console.WriteLine("Os três maiores valores são: " + tres_maiores_valores[0] + " " + tres_maiores_valores[1] + " " + tres_maiores_valores[2]);
+            Console.WriteLine("\r\nOs três maiores valores são: " + tres_maiores_valores[0] + " " + tres_maiores_valores[1] + " " + tres_maiores_valores[2]);
 
             EncontrarValoresNegativos(ref numeros, out negativos);
-            Console.Write("Os valores negativos são: ");
+            Console.Write("\r\nOs valores negativos são: ");
             for (int i = 0; i < negativos.Length; i++) Console.Write(negativos[i] + " ");
-            
+
+            Console.WriteLine(" ");
             OrdenarArray(numeros);
             Console.Write("\r\nOs valores em ordem são: ");
             for (int i = 0; i < numeros.Length; i++) Console.Write(numeros[i] + " ");
-        }
+
+            Console.ReadKey();  
+        } 
 
         #region Métodos
 
@@ -69,7 +72,7 @@ namespace Programacao_Estruturada
         static double EncontrarValorMedio(ref double valor_medio, ref double[] array_numeros)
         {
             double somador = 0;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < array_numeros.Length; i++)
             {
                 somador += array_numeros[i];
                 valor_medio = somador / array_numeros.Length;
@@ -78,7 +81,7 @@ namespace Programacao_Estruturada
         }
         static void EncontrarTresMaioresValores(ref double[] tres_maiores, ref double[] array_numeros)
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < array_numeros.Length; i++)
             {
                 if (array_numeros[i] > tres_maiores[0])
                 {
@@ -97,7 +100,7 @@ namespace Programacao_Estruturada
         static void EncontrarValoresNegativos(ref double[] array_numeros, out double[] array_negativos)
         {
             int cont_negativos = 0;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < array_numeros.Length; i++)
             {
                 if (array_numeros[i] < 0)
                 {
@@ -106,7 +109,7 @@ namespace Programacao_Estruturada
             }
             double[] array_numeros_negativos = new double[cont_negativos];
             cont_negativos = 0;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < array_numeros.Length; i++)
             {
                 if (array_numeros[i] < 0)
                 {
@@ -132,6 +135,9 @@ namespace Programacao_Estruturada
                 }
             }
         }
+
+
+
         #endregion
     }
 }
