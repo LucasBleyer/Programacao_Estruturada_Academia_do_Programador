@@ -6,10 +6,10 @@ namespace Programacao_Estruturada
     {
         static void Main(string[] args)
         {
-            double[] numeros = new double[10] { 15, -3, 0, 4, -3, 1, 13, 8, 2, -5 };
-            double maior = 0, menor;
-            double media = 0;
+            double[] numeros = new double[10] { 15, -3, 0, 4, -2, 1, 13, 8, 2, -5 };
+            double maior = 0, menor, media = 0;
             double[] tres_maiores_valores = new double[3];
+            double[] negativos;
 
             EncontrarMaiorValor(ref maior, ref numeros);
             Console.WriteLine("O maior valor é: " + maior);
@@ -21,10 +21,12 @@ namespace Programacao_Estruturada
             Console.WriteLine("O valor médio é: " + media);
 
             EncontrarTresMaioresValores(ref tres_maiores_valores, ref numeros);
-            Console.WriteLine("Os três maiores valores são: " + tres_maiores_valores[0] + ", " + tres_maiores_valores[1] + ", " + tres_maiores_valores[2]);
+            Console.WriteLine("Os três maiores valores são: " + tres_maiores_valores[0] + " " + tres_maiores_valores[1] + " " + tres_maiores_valores[2]);
 
-            EncontrarValoresNegativos(ref numeros);
-            Console.WriteLine("Os valores negativos são: " + numeros);
+            EncontrarValoresNegativos(ref numeros, out negativos);
+            Console.Write("Os valores negativos são: ");
+            for (int i = 0; i < negativos.Length; i++) Console.Write(negativos[i]+ " ");
+
         }
         #region Métodos
 
@@ -59,7 +61,6 @@ namespace Programacao_Estruturada
                 }
             }
             menor_valor = menor;
-            
         }
         static double EncontrarValorMedio(ref double valor_medio, ref double[] array_numeros)
         {
@@ -89,18 +90,28 @@ namespace Programacao_Estruturada
                 }
             }
         }
-        static void EncontrarValoresNegativos(ref double[] array_numeros)
+        static void EncontrarValoresNegativos(ref double[] array_numeros, out double[] array_negativos)
         {
-            string str_negativos = "";
+            int cont_negativos = 0;
             for (int i = 0; i < 10; i++)
             {
                 if (array_numeros[i] < 0)
                 {
-                    str_negativos = str_negativos + array_numeros[i];
+                    cont_negativos++;
                 }
             }
+            double[] array_numeros_negativos = new double[cont_negativos];
+            cont_negativos = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                if (array_numeros[i] < 0)
+                {
+                    array_numeros_negativos[cont_negativos] = array_numeros[i];
+                    cont_negativos++;
+                }
+            }
+            array_negativos = array_numeros_negativos;
         }
-
 
         #endregion
     }
