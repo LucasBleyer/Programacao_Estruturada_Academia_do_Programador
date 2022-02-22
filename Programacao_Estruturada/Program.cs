@@ -6,12 +6,10 @@ namespace Programacao_Estruturada
     {
         static void Main(string[] args)
         {
-            double[] numeros = new double[10]; //{ 15, -3, 0, 4, -2, 4, 13, 8, 2, -5 }
+            double[] numeros = new double[10] { 15, -3, 98, 4, -2, 4, 13, 8, 2, -5 };
             double maior = 0, menor, media = 0;
             double[] tres_maiores_valores = new double[3];
             double[] negativos;
-
-            LerNumerosUsuario(numeros);
 
             EncontrarMaiorValor(ref maior, ref numeros);
             Console.WriteLine("\r\nO maior valor é: " + maior);
@@ -33,16 +31,10 @@ namespace Programacao_Estruturada
             OrdenarArray(numeros);
             Console.Write("\r\nOs valores em ordem são: ");
             for (int i = 0; i < numeros.Length; i++) Console.Write(numeros[i] + " ");
+
+            Console.ReadKey();
         }
         #region Métodos
-        static void LerNumerosUsuario(double[] numeros)
-        {
-            for (int i = 0; i < (numeros.Length); i++)
-            {
-                Console.Write("Informe o valor " + i + ": ");
-                numeros[i] = Convert.ToDouble(Console.ReadLine());
-            }
-        }
         static void EncontrarMaiorValor(ref double maior_valor, ref double[] array_numeros)
         {
             double[] array_funcao = new double[array_numeros.Length];
