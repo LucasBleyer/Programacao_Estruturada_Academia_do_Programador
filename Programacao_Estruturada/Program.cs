@@ -14,7 +14,7 @@ namespace Programacao_Estruturada
             EncontrarMaiorValor(ref maior, ref numeros);
             Console.WriteLine("O maior valor é: " + maior);
 
-            EncontrarMenorValor(ref numeros, out menor);
+            EncontrarMenorValor(out menor, ref numeros);
             Console.WriteLine("O menor valor é: " + menor);
 
             EncontrarValorMedio(ref media, ref numeros);
@@ -25,9 +25,13 @@ namespace Programacao_Estruturada
 
             EncontrarValoresNegativos(ref numeros, out negativos);
             Console.Write("Os valores negativos são: ");
-            for (int i = 0; i < negativos.Length; i++) Console.Write(negativos[i]+ " ");
-
+            for (int i = 0; i < negativos.Length; i++) Console.Write(negativos[i] + " ");
+            
+            OrdenarArray(numeros);
+            Console.Write("\r\nOs valores em ordem são: ");
+            for (int i = 0; i < numeros.Length; i++) Console.Write(numeros[i] + " ");
         }
+
         #region Métodos
 
         static void EncontrarMaiorValor(ref double maior_valor, ref double[] array_numeros)
@@ -46,7 +50,7 @@ namespace Programacao_Estruturada
             }
             maior_valor = maior;
         }
-        static void EncontrarMenorValor(ref double[] array_numeros, out double menor_valor)
+        static void EncontrarMenorValor(out double menor_valor, ref double[] array_numeros)
         {
             double[] array_funcao = new double[array_numeros.Length];
             array_funcao = array_numeros;
@@ -112,7 +116,22 @@ namespace Programacao_Estruturada
             }
             array_negativos = array_numeros_negativos;
         }
-
+        static void OrdenarArray(double[] numeros)
+        {
+            for (int i = 0; i < numeros.Length; i++)
+            {
+                for (int j = 0; j < (numeros.Length - 1); j++)
+                {
+                    double troca;
+                    if (numeros[j] > numeros[j + 1])
+                    {
+                        troca = numeros[j];
+                        numeros[j] = numeros[j + 1];
+                        numeros[j + 1] = troca;
+                    }
+                }
+            }
+        }
         #endregion
     }
 }
