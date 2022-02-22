@@ -6,10 +6,10 @@ namespace Programacao_Estruturada
     {
         static void Main(string[] args)
         {
-            double[] numeros = new double[10] { 10, 10, 0, 4, 3, 1, 10, 8, 2, 5 };
+            double[] numeros = new double[10] { 15, 14, 0, 4, 3, 1, 13, 8, 2, 5 };
             double maior = 0, menor;
             double media = 0;
-            double[] tres_maiores = new double[3];
+            double[] tres_maiores_valores = new double[3];
 
             EncontrarMaiorValor(ref maior, ref numeros);
             Console.WriteLine("O maior valor é: " + maior);
@@ -20,7 +20,8 @@ namespace Programacao_Estruturada
             EncontrarValorMedio(ref media, ref numeros);
             Console.WriteLine("O valor médio é: " + media);
 
-            EncontrarTresMaioresValores();
+            EncontrarTresMaioresValores(ref tres_maiores_valores, ref numeros);
+            Console.WriteLine("Os três maiores valores são: " + tres_maiores_valores[0] + ", " + tres_maiores_valores[1] + ", " + tres_maiores_valores[2]);
         }
 
         static void EncontrarMaiorValor(ref double maior_valor, ref double[] array_maior_valor)
@@ -56,9 +57,23 @@ namespace Programacao_Estruturada
             return valor_medio;
         }
 
-        static void EncontrarTresMaioresValores()
+        static void EncontrarTresMaioresValores(ref double[] tres_maiores, ref double[] array_tres_maiores)
         {
-
+            for (int i = 0; i < 10; i++)
+            {
+                if (array_tres_maiores[i] > tres_maiores[0])
+                {
+                    tres_maiores[0] = array_tres_maiores[i];
+                }
+                else if (array_tres_maiores[i] > tres_maiores[1])
+                {
+                    tres_maiores[1] = array_tres_maiores[i];
+                }
+                else if (array_tres_maiores[i] > tres_maiores[2])
+                {
+                    tres_maiores[2] = array_tres_maiores[i];
+                }
+            }
         }
     }
 }
