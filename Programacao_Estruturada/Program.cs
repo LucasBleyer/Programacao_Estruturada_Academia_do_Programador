@@ -6,7 +6,7 @@ namespace Programacao_Estruturada
     {
         static void Main(string[] args)
         {
-            double[] numeros = new double[10] { 15, 14, 0, 4, 3, 1, 13, 8, 2, 5 };
+            double[] numeros = new double[10] { 15, -3, 0, 4, -3, 1, 13, 8, 2, -5 };
             double maior = 0, menor;
             double media = 0;
             double[] tres_maiores_valores = new double[3];
@@ -22,58 +22,86 @@ namespace Programacao_Estruturada
 
             EncontrarTresMaioresValores(ref tres_maiores_valores, ref numeros);
             Console.WriteLine("Os três maiores valores são: " + tres_maiores_valores[0] + ", " + tres_maiores_valores[1] + ", " + tres_maiores_valores[2]);
-        }
 
-        static void EncontrarMaiorValor(ref double maior_valor, ref double[] array_maior_valor)
+            EncontrarValoresNegativos(ref numeros);
+            Console.WriteLine("Os valores negativos são: " + numeros);
+        }
+        #region Métodos
+
+        static void EncontrarMaiorValor(ref double maior_valor, ref double[] array_numeros)
         {
-            maior_valor = -999999999;
-            for (int i = 0; i < 10; i++)
+            double[] array_funcao = new double[array_numeros.Length];
+            array_funcao = array_numeros;
+            double maior = maior_valor;
+            maior = array_funcao[0];
+
+            for (int i = 0; i < array_funcao.Length; i++)
             {
-                if (array_maior_valor[i] > maior_valor)
+                if (array_funcao[i] > maior)
                 {
-                    maior_valor = array_maior_valor[i];
+                    maior = array_funcao[i];
                 }
             }
+            maior_valor = maior;
         }
-        static void EncontrarMenorValor(ref double[] array_menor_valor, out double menor_valor)
+        static void EncontrarMenorValor(ref double[] array_numeros, out double menor_valor)
         {
-            menor_valor = 999999999;
-            for (int i = 0; i < 10; i++)
+            double[] array_funcao = new double[array_numeros.Length];
+            array_funcao = array_numeros;
+            double menor = 0;
+            menor_valor = array_numeros[0];
+
+            for (int i = 0; i < array_funcao.Length; i++)
             {
-                if (array_menor_valor[i] < menor_valor)
+                if (array_funcao[i] < menor)
                 {
-                    menor_valor = array_menor_valor[i];
+                    menor = array_funcao[i];
                 }
             }
+            menor_valor = menor;
+            
         }
-        static double EncontrarValorMedio(ref double valor_medio, ref double[] array_media)
+        static double EncontrarValorMedio(ref double valor_medio, ref double[] array_numeros)
         {
             double somador = 0;
             for (int i = 0; i < 10; i++)
             {
-                somador += array_media[i];
-                valor_medio = somador / array_media.Length;
+                somador += array_numeros[i];
+                valor_medio = somador / array_numeros.Length;
             }
             return valor_medio;
         }
-
-        static void EncontrarTresMaioresValores(ref double[] tres_maiores, ref double[] array_tres_maiores)
+        static void EncontrarTresMaioresValores(ref double[] tres_maiores, ref double[] array_numeros)
         {
             for (int i = 0; i < 10; i++)
             {
-                if (array_tres_maiores[i] > tres_maiores[0])
+                if (array_numeros[i] > tres_maiores[0])
                 {
-                    tres_maiores[0] = array_tres_maiores[i];
+                    tres_maiores[0] = array_numeros[i];
                 }
-                else if (array_tres_maiores[i] > tres_maiores[1])
+                else if (array_numeros[i] > tres_maiores[1])
                 {
-                    tres_maiores[1] = array_tres_maiores[i];
+                    tres_maiores[1] = array_numeros[i];
                 }
-                else if (array_tres_maiores[i] > tres_maiores[2])
+                else if (array_numeros[i] > tres_maiores[2])
                 {
-                    tres_maiores[2] = array_tres_maiores[i];
+                    tres_maiores[2] = array_numeros[i];
                 }
             }
         }
+        static void EncontrarValoresNegativos(ref double[] array_numeros)
+        {
+            string str_negativos = "";
+            for (int i = 0; i < 10; i++)
+            {
+                if (array_numeros[i] < 0)
+                {
+                    str_negativos = str_negativos + array_numeros[i];
+                }
+            }
+        }
+
+
+        #endregion
     }
 }
