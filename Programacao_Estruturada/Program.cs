@@ -7,27 +7,30 @@ namespace Programacao_Estruturada
         static void Main(string[] args)
         {
             int[] numeros = new int[10] { 15, -3, 98, 3, -2, 4, 13, 8, 2, -5 };
-            int maior = 0, menor, media = 0, numero_remover;
+            int maior = 0, menor, numero_remover;
+            decimal media = 0;
             int[] tres_maiores_valores = new int[3];
             int[] negativos;
 
+            Console.Write("A sequência de números é: ");
+            for (int i = 0; i < numeros.Length; i++) Console.Write(numeros[i] + " ");
+
             EncontrarMaiorValor(ref maior, ref numeros);
-            Console.WriteLine("\r\nO maior valor é: " + maior);
+            Console.WriteLine("O maior valor é: " + maior);
 
             EncontrarMenorValor(out menor, ref numeros);
-            Console.WriteLine("\r\nO menor valor é: " + menor);
+            Console.WriteLine("O menor valor é: " + menor);
 
             EncontrarValorMedio(ref media, ref numeros);
-            Console.WriteLine("\r\nO valor médio é: " + media);
+            Console.WriteLine("O valor médio é: " + media);
 
             EncontrarTresMaioresValores(ref tres_maiores_valores, ref numeros);
-            Console.WriteLine("\r\nOs três maiores valores são: " + tres_maiores_valores[0] + " " + tres_maiores_valores[1] + " " + tres_maiores_valores[2]);
+            Console.WriteLine("Os três maiores valores são: " + tres_maiores_valores[0] + " " + tres_maiores_valores[1] + " " + tres_maiores_valores[2]);
 
             EncontrarValoresNegativos(ref numeros, out negativos);
-            Console.Write("\r\nOs valores negativos são: ");
+            Console.Write("Os valores negativos são: ");
             for (int i = 0; i < negativos.Length; i++) Console.Write(negativos[i] + " ");
             
-            Console.WriteLine(" ");
             OrdenarArray(numeros);
             Console.Write("\r\nOs valores em ordem são: ");
             for (int i = 0; i < numeros.Length; i++) Console.Write(numeros[i] + " ");
@@ -73,9 +76,9 @@ namespace Programacao_Estruturada
             }
             menor_valor = menor;
         }
-        static double EncontrarValorMedio(ref int valor_medio, ref int[] array_numeros)
+        static decimal EncontrarValorMedio(ref decimal valor_medio, ref int[] array_numeros)
         {
-            int somador = 0;
+            decimal somador = 0;
             for (int i = 0; i < array_numeros.Length; i++)
             {
                 somador += array_numeros[i];
